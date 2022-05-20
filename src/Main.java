@@ -7,7 +7,8 @@ public class Main {
         List<String> names = Arrays.asList("Jack", "Connor", "Maria", "George", "Anna", "John");
         List<String> families = Arrays.asList("Evans", "Young", "Harris", "Wilson", "Davies", "Adamson", "Brown");
         Collection<Person> persons = new ArrayList<>();
-        for (int i = 0; i < 10_000_000; i++) {
+        //TODO исправить выборку до 10_000_000
+        for (int i = 0; i < 100; i++) {
             persons.add(new Person(
                     names.get(new Random().nextInt(names.size())),
                     families.get(new Random().nextInt(families.size())),
@@ -32,8 +33,8 @@ public class Main {
         //отсортированный по фамилии список потенциально работоспособных людей с высшим образованием в выборке
         List<Person> worker = persons.stream()
                 .filter(person -> person.getEducation().equals(Education.HIGHER) && person.getAge() >= 18)
-                .filter(person -> person.getSex().equals(Sex.WOMAN) && person.getAge() < 60)
-                .filter(person -> person.getSex().equals(Sex.MAN) && person.getAge() < 65)
+                .filter(person -> person.getSex().equals(Sex.WOMAN) && person.getAge() < 60
+                        || person.getSex().equals(Sex.MAN) && person.getAge() < 65)
                 .sorted(Comparator.comparing(Person::getFamily))
                 .collect(Collectors.toList());
     }

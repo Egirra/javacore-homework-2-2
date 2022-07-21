@@ -7,8 +7,7 @@ public class Main {
         List<String> names = Arrays.asList("Jack", "Connor", "Maria", "George", "Anna", "John");
         List<String> families = Arrays.asList("Evans", "Young", "Harris", "Wilson", "Davies", "Adamson", "Brown");
         Collection<Person> persons = new ArrayList<>();
-        //TODO исправить выборку до 10_000_000
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10_000_000; i++) {
             persons.add(new Person(
                     names.get(new Random().nextInt(names.size())),
                     families.get(new Random().nextInt(families.size())),
